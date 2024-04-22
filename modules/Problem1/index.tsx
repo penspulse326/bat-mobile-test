@@ -1,6 +1,6 @@
 'use client';
 
-import calculateSum from '@/app/common/helper/calculateSum';
+import calculateSum from '@/common/helper/calculateSum';
 import { useRef, useState } from 'react';
 
 function Problem1() {
