@@ -1,4 +1,4 @@
-import Problem1 from '../../Problem1';
+import Problem1 from '@/modules/Problem1';
 
 function Problem1Page() {
   return (

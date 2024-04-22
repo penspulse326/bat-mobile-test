@@ -11,6 +11,12 @@ export default function Home() {
             連結
           </Link>
         </li>
+        <li>
+          第 2 題：{' '}
+          <Link href="/problem2" className="font-bold text-blue-500">
+            連結
+          </Link>
+        </li>
       </ul>
     </main>
   );
