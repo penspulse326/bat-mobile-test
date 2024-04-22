@@ -1,3 +1,4 @@
+import CompDescBox from '@/modules/CompDescBox';
 import Link from 'next/link';
 
 function Problem3Page() {
@@ -7,6 +8,10 @@ function Problem3Page() {
       <Link href="/" className="font-bold text-blue-500">
         上一頁
       </Link>
+      <h2 className="text-xl font-bold">聊天室 元件規劃</h2>
+      <div className="w-full rounded-md bg-white px-12 py-8">
+        <CompDescBox />
+      </div>
     </main>
   );
 }
