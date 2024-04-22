@@ -5,3 +5,14 @@ export type PrizeType = {
 };
 
 export type PrizeListType = Record<string, PrizeType>;
+
+export type MessageDataType = {
+  id: number;
+  content: string;
+  time: string;
+};
+
+export type MessageLogsType = {
+  targetName: string;
+  logs: MessageDataType[];
+};
