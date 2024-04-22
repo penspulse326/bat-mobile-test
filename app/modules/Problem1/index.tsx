@@ -54,12 +54,6 @@ function Problem1() {
         N 為 {lastValueRef.current}，總合為：{sum}
       </div>
       <div>共花費：{spentTime} 毫秒</div>
-      <hr className="w-full border-gray-500" />
-      <p className="text-center text-sm">
-        計算說明：
-        <br /> N 為奇數時的規律：總合為： N/2 + 1 <br />N
-        為偶數時的規律，總合為： N/2 + 2
-      </p>
     </div>
   );
 }
