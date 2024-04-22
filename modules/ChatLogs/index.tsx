@@ -1,71 +1,22 @@
 import ChatMessage from '@/components/ChatMessage';
 import { messageLogs } from './data';
+import { MessageDataType } from '@/common/constants/types';
 
 const userId = -1;
 
 function ChatLogs() {
+  const { logs } = messageLogs;
+
   return (
-    <ul className="h-[calc(100%-96px)] overflow-y-scroll p-4">
-      <ChatMessage />
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
-      <div>ChatLogs </div>
+    <ul className="flex h-[calc(100%-96px)] flex-col gap-4 overflow-y-scroll p-4">
+      {logs.map(({ id, username, content, time }: MessageDataType) => (
+        <ChatMessage
+          key={`${id}-${time}`}
+          username={username}
+          content={content}
+          isMe={userId === id}
+        />
+      ))}
     </ul>
   );
 }

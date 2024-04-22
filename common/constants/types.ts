@@ -8,6 +8,7 @@ export type PrizeListType = Record<string, PrizeType>;
 
 export type MessageDataType = {
   id: number;
+  username: string;
   content: string;
   time: string;
 };
