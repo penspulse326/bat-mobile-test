@@ -1,7 +1,7 @@
 import Problem2 from '@/modules/Problem2';
 import Link from 'next/link';
 
-function Problem1Page() {
+function Problem2Page() {
   return (
     <main className="flex min-h-[100dvh] flex-col items-center gap-4 p-24">
       <h1 className="text-2xl">第 2 題</h1>
@@ -25,4 +25,4 @@ function Problem1Page() {
   );
 }
 
-export default Problem1Page;
+export default Problem2Page;

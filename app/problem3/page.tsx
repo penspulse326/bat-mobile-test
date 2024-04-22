@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-function Problem1Page() {
+function Problem3Page() {
   return (
     <main className="flex min-h-[100dvh] flex-col items-center gap-4 p-24">
       <h1 className="text-2xl">第 3 題</h1>
@@ -11,4 +11,4 @@ function Problem1Page() {
   );
 }
 
-export default Problem1Page;
+export default Problem3Page;
