@@ -18,10 +18,7 @@ function Problem2() {
   };
 
   return (
-    <div
-      style={{ background: 'red' }}
-      className="flex flex-col items-center gap-4"
-    >
+    <div className="flex flex-col items-center gap-4">
       請按下方 抽獎 按鈕進行抽獎
       <button
         type="button"
