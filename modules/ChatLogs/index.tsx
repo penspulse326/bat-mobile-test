@@ -1,4 +1,5 @@
 import ChatMessage from '@/components/ChatMessage';
+import { messageLogs } from './data';
 
 function ChatLogs() {
   return (
