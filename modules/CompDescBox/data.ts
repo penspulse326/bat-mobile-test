@@ -1,7 +1,9 @@
 import { CompDescType } from '@/common/constants/types';
 import BtnCamera from '@/components/Buttons/BtnCamera';
 import BtnMenu from '@/components/Buttons/BtnMenu';
+import BtnSubmitMessage from '@/components/Buttons/BtnSubmitMessage';
 import ChatMessage from '@/components/ChatMessage';
+import InputMessage from '@/components/Inputs/InputMessage';
 
 export const componentList: CompDescType[] = [
   {
@@ -23,6 +25,16 @@ export const componentList: CompDescType[] = [
       { name: 'content', desc: '訊息內容' },
       { name: 'isMe', desc: '是否是自己的訊息' },
     ],
+  },
+  {
+    title: 'InputMessage',
+    comp: InputMessage,
+    content: '輸入訊息，按下 Enter 觸發新增訊息 API',
+  },
+  {
+    title: 'BtnSubmitMessage',
+    comp: BtnSubmitMessage,
+    content: '點擊觸發新增訊息 API',
   },
 ];
 

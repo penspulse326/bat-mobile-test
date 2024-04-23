@@ -1,8 +1,8 @@
 import ChatLogs from '../ChatLogs';
+import InputChatMessage from '../InputChatMessage';
 import Navbar from '../Navbar';
 import { componentList } from './data';
 import CompDesc from '@/components/CompDesc';
-import InputMessage from '@/components/Inputs/InputMessage';
 
 function CompDescBox() {
   return (
@@ -25,7 +25,7 @@ function CompDescBox() {
       <div className="flex h-[667px] w-[375px] flex-col bg-blue-100 outline outline-2 outline-slate-400">
         <Navbar />
         <ChatLogs />
-        <InputMessage />
+        <InputChatMessage />
       </div>
     </div>
   );
