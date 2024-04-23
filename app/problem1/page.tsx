@@ -1,5 +1,5 @@
-import Problem1 from '@/modules/Problem1';
 import Link from 'next/link';
+import Problem1 from '@/modules/Problem1';
 
 function Problem1Page() {
   return (
