@@ -1,3 +1,5 @@
+import { FC } from 'react';
+
 export type PrizeType = {
   name: string;
   amount: number;
@@ -16,4 +18,11 @@ export type MessageDataType = {
 export type MessageLogsType = {
   targetName: string;
   logs: MessageDataType[];
+};
+
+export type CompDescType = {
+  comp: FC<any>;
+  title: string;
+  content: string;
+  params?: { name: string; desc: string }[];
 };
