@@ -1,7 +1,6 @@
 import ChatLogs from '../ChatLogs';
 import Navbar from '../Navbar';
 import CompDesc from '@/components/CompDesc';
-import BtnCamera from '@/components/Buttons/BtnCamera';
 import InputMessage from '@/components/Inputs/InputMessage';
 
 function CompDescBox() {
