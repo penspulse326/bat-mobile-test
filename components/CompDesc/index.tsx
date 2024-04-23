@@ -13,7 +13,6 @@ function CompDesc({ comp, title, content, params }: PropsType) {
       <section>
         <h5 className="font-bold">元件名稱：{title}</h5>
         <h6 className="mt-2">功能描述：{content}</h6>
-
         {params && (
           <>
             <h6 className="mt-2">參數：</h6>{' '}

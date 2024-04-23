@@ -25,4 +25,5 @@ export type CompDescType = {
   title: string;
   content: string;
   params?: { name: string; desc: string }[];
+  defaultParams?: Record<string, any>;
 };
