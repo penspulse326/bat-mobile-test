@@ -5,7 +5,7 @@ import BtnSubmitMessage from '@/components/Buttons/BtnSubmitMessage';
 import ChatMessage from '@/components/ChatMessage';
 import Avatar from '@/components/ChatMessage/Avatar';
 import Message from '@/components/ChatMessage/Message';
-import InputMessage from '@/components/Inputs/InputChatMessage/InputBox';
+import InputBox from '@/components/Inputs/InputChatMessage/InputBox';
 
 export const componentList: CompDescType[] = [
   {
@@ -37,8 +37,8 @@ export const componentList: CompDescType[] = [
   },
 
   {
-    title: 'InputMessage',
-    comp: InputMessage,
+    title: 'InputBox',
+    comp: InputBox,
     content: '輸入訊息，按下 Enter 觸發新增訊息 API',
   },
   {

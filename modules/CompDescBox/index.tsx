@@ -1,5 +1,5 @@
 import ChatLogs from '../ChatLogs';
-import InputChatMessage from '../InputChatMessage';
+import InputChatMessage from '../../components/Inputs/InputChatMessage';
 import Navbar from '../Navbar';
 import { componentList } from './data';
 import CompDesc from '@/components/CompDesc';
