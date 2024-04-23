@@ -1,6 +1,6 @@
-import InputMessage from '@/components/Inputs/InputMessage';
 import ChatLogs from '../ChatLogs';
 import Navbar from '../Navbar';
+import InputMessage from '@/components/Inputs/InputMessage';
 
 function CompDescBox() {
   return (
