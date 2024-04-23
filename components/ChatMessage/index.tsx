@@ -19,7 +19,7 @@ function ChatMessage({ username, content, isMe }: PropsType) {
         style={orderStyle}
         className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-300"
       >
-        {username[0]}
+        {isMe ? '我' : username[0]}
       </div>
       <p className="border border-slate-400 p-2">{content}</p>
     </li>
