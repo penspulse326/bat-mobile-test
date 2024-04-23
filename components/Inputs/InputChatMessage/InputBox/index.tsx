@@ -1,4 +1,4 @@
-function InputMessage() {
+function InputBox() {
   return (
     <input
       type="text"
@@ -8,4 +8,4 @@ function InputMessage() {
   );
 }
 
-export default InputMessage;
+export default InputBox;

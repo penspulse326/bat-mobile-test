@@ -5,7 +5,7 @@ import BtnSubmitMessage from '@/components/Buttons/BtnSubmitMessage';
 import ChatMessage from '@/components/ChatMessage';
 import Avatar from '@/components/ChatMessage/Avatar';
 import Message from '@/components/ChatMessage/Message';
-import InputMessage from '@/components/Inputs/InputMessage';
+import InputMessage from '@/components/Inputs/InputChatMessage/InputBox';
 
 export const componentList: CompDescType[] = [
   {
