@@ -19,7 +19,7 @@ export const componentList: CompDescType[] = [
     comp: ChatMessage,
     content: '顯示聊天訊息',
     params: [
-      { name: 'username', desc: '使用者名稱' },
+      { name: 'username', desc: '使用者名稱（這邊可以再擴充成圖片）' },
       { name: 'content', desc: '訊息內容' },
       { name: 'isMe', desc: '是否是自己的訊息' },
     ],
