@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import CompDescBox from '@/modules/CompDescBox';
+import CompDescBox from '@/modules/Problem3/CompDescBox';
 
 function Problem3Page() {
   return (

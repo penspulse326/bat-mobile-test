@@ -9,7 +9,7 @@ function ChatLogs() {
 
   return (
     <ul className="flex h-[calc(100%-96px)] flex-col gap-4 overflow-y-scroll p-4">
-      {logs.map(({ id, username, content, time }: MessageDataType) => (
+      {logs.map(({ id, content, time }: MessageDataType) => (
         <ChatMessage
           key={`${id}-${time}`}
           content={content}
