@@ -25,7 +25,7 @@ export default function Home() {
         </li>
         <li>
           第 4 題：{' '}
-          <Link href="/problem4" className="font-bold text-blue-500">
+          <Link href="/ubike" className="font-bold text-blue-500">
             連結
           </Link>
         </li>
