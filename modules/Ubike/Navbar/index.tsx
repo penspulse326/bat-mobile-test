@@ -1,71 +1,29 @@
-import Image from 'next/image';
-import Link from 'next/link';
+'use client';
+
+import { useState } from 'react';
+import Logo from '@/components/Logo';
+import LinkGroup from './LinkGroup';
+import BtnMenu from './BtnMenu';
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleMenuClick = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav className="border-b border-[#EBEBEB]">
       <div className="container mx-auto">
-        <div className="mx-[124px] flex h-[105px] items-center justify-between">
-          <section className="flex">
-            <Link href="/ubike" className="mr-[60px] h-[95px] w-[95px]">
-              <Image
-                src="/logo-ubike.svg"
-                alt="logo"
-                width={95}
-                height={95}
-                className="object-cover"
-              />
-            </Link>
-            <ul className="flex items-center gap-10">
-              <li>
-                <Link
-                  href="/ubike"
-                  className="text-secondary hover:text-primary text-lg font-medium duration-300"
-                >
-                  使用說明
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ubike"
-                  className="text-secondary hover:text-primary text-lg font-medium duration-300"
-                >
-                  收費方式
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ubike"
-                  className="text-secondary hover:text-primary text-lg font-medium duration-300"
-                >
-                  站點資訊
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ubike"
-                  className="text-secondary hover:text-primary text-lg font-medium duration-300"
-                >
-                  最新消息
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ubike"
-                  className="text-secondary hover:text-primary text-lg font-medium duration-300"
-                >
-                  活動專區
-                </Link>
-              </li>
-            </ul>
-          </section>
-          <Link
-            href="/ubike"
-            className="bg-primary hover:bg-secondary rounded-full px-6 py-[10px] text-lg text-white duration-300"
-          >
-            登入
-          </Link>
+        <div className="mx-8 flex h-[72px] items-center justify-between 2xl:mx-[124px] 2xl:h-[105px] 2xl:text-lg">
+          <Logo />
+          <BtnMenu isOpen={isOpen} onClick={handleMenuClick} />
+          {/* links group for lg */}
+          <div className="hidden w-full lg:block">
+            <LinkGroup />
+          </div>
         </div>
+        {/* links group for mobile */}
+        <div className="lg:hidden">{isOpen && <LinkGroup />}</div>
       </div>
     </nav>
   );
