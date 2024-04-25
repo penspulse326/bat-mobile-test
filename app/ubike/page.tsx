@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import CitySelect from '@/components/Selects/CitySelect';
 
 function UbikePage() {
   return (
@@ -6,9 +7,9 @@ function UbikePage() {
       <div className="container mx-auto">
         <div className="mx-8 2xl:mx-[124px]">
           <h1 className="my-8 text-2xl font-bold text-primary">站點資訊</h1>
-          <div className="flex items-end">
-            <div>123</div>
-            <div className="relative w-full max-w-[502px]">
+          <div className="flex">
+            <CitySelect />
+            <div className="relative w-full max-w-[502px] self-end">
               <Image
                 src="/banner.png"
                 alt="bike"
