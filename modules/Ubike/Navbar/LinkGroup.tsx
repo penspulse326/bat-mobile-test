@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 const links = [
-  { name: '使用說明', href: '/ubike' },
-  { name: '收費方式', href: '/ubike' },
-  { name: '站點資訊', href: '/ubike' },
-  { name: '最新消息', href: '/ubike' },
-  { name: '活動專區', href: '/ubike' },
+  { name: '使用說明', href: '/ubike?tab=guide' },
+  { name: '收費方式', href: '/ubike?tab=pricing' },
+  { name: '站點資訊', href: '/ubike?tab=locations' },
+  { name: '最新消息', href: '/ubike?tab=news' },
+  { name: '活動專區', href: '/ubike?tab=events' },
 ];
 
 function LinkGroup() {
