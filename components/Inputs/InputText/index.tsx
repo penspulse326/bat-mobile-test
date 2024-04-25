@@ -1,4 +1,4 @@
-function InputBox() {
+function InputText() {
   return (
     <input
       type="text"
@@ -8,4 +8,4 @@ function InputBox() {
   );
 }
 
-export default InputBox;
+export default InputText;

@@ -4,7 +4,7 @@ type PropsType = {
   isMe: boolean;
 };
 
-function Avatar({ isMe }: PropsType) {
+function ChatAvatar({ isMe }: PropsType) {
   const orderStyle = {
     order: isMe ? 2 : 0,
   };
@@ -23,4 +23,4 @@ function Avatar({ isMe }: PropsType) {
   );
 }
 
-export default Avatar;
+export default ChatAvatar;
