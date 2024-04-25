@@ -6,7 +6,7 @@ import BtnSubmitMessage from '@/components/Buttons/BtnSubmitMessage';
 import Navbar from '../Navbar';
 import ChatAvatar from '@/components/ChatAvatar';
 import ChatLogs from '../ChatLogs';
-import InputMessage from '@/components/Inputs/InputMessage';
+import InputMessage from '@/modules/Problem3/InputMessage';
 import InputText from '@/components/Inputs/InputText';
 
 export const componentList: CompDescType[] = [

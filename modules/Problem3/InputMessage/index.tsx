@@ -1,5 +1,5 @@
 import BtnSubmitMessage from '@/components/Buttons/BtnSubmitMessage';
-import InputText from '../InputText';
+import InputText from '../../../components/Inputs/InputText';
 
 function InputMessage() {
   return (
