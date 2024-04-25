@@ -1,7 +1,7 @@
 'use client';
 
-import calculateSum from '@/common/helper/calculateSum';
 import { useRef, useState } from 'react';
+import calculateSum from '@/common/helper/calculateSum';
 
 function Problem1() {
   const [value, setValue] = useState(0);
