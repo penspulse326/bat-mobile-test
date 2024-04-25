@@ -1,5 +1,5 @@
-import ChatMessage from '@/components/ChatMessage';
 import { messageLogs } from './data';
+import ChatMessage from '@/components/ChatMessage';
 import { MessageDataType } from '@/common/constants/types';
 
 const userId = -1;
@@ -12,7 +12,6 @@ function ChatLogs() {
       {logs.map(({ id, username, content, time }: MessageDataType) => (
         <ChatMessage
           key={`${id}-${time}`}
-          username={username}
           content={content}
           isMe={userId === id}
         />

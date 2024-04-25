@@ -3,26 +3,14 @@
     "airbnb",
     "airbnb-typescript",
     "next/core-web-vitals",
+    "plugin:import/recommended",
     "prettier"
   ],
+  "plugins": ["import"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "rules": {
-    "import/order": [
-      "error",
-      {
-        "groups": [
-          "external",
-          "builtin",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ]
-      }
-    ],
-
     "import/prefer-default-export": "off"
   }
 }

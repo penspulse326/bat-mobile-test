@@ -1,9 +1,9 @@
 'use client';
 
+import { useState } from 'react';
 import prizes from '@/common/constants/prizes';
 import { PrizeListType } from '@/common/constants/types';
 import raffle from '@/common/helper/raffle';
-import { useState } from 'react';
 
 function Problem2() {
   const [prizeList, setPrizeList] = useState<PrizeListType>(prizes);
