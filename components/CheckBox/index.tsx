@@ -1,9 +1,20 @@
-import Image from 'next/image';
+'use client';
+
+import { useState } from 'react';
+import IconChecked from './IconChecked';
+import IconUnchecked from './IconUnchecked';
 
 function CheckBox() {
+  const [isChecked, setIsChecked] = useState(false);
+
   return (
-    <button type="button">
-      <Image src="/icon-check.svg" alt="check box" width={24} height={24} />
+    <button
+      type="button"
+      onClick={() => setIsChecked(!isChecked)}
+      className="flex items-center gap-3 text-lg"
+    >
+      {isChecked ? <IconChecked /> : <IconUnchecked />}
+      <span>只看有貨</span>
     </button>
   );
 }
