@@ -12,7 +12,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="border-b border-[#EBEBEB]">
+    <nav className="sticky top-0 z-50 border-b border-[#EBEBEB]">
       <div className="container mx-auto">
         <div className="mx-8 flex h-[72px] items-center justify-between 2xl:mx-[124px] 2xl:h-[105px] 2xl:text-lg">
           <Logo />

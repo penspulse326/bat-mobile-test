@@ -18,6 +18,16 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+@layer base {
+  th {
+    @apply font-medium px-4 py-5;
+  }
+
+  td {
+    @apply text-center py-5;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
