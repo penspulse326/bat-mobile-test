@@ -1,4 +1,5 @@
-import Banner from '@/modules/Ubike/Banner';
+import { BannerImage } from '@/components/BannerImage';
+import SearchTool from '@/modules/Ubike/SearchTool';
 
 function UbikePage() {
   return (
@@ -8,7 +9,10 @@ function UbikePage() {
           <h1 className="my-8 text-lg font-bold text-primary lg:text-2xl">
             站點資訊
           </h1>
-          <Banner />
+          <div className="flex flex-col justify-between lg:flex-row">
+            <SearchTool />
+            <BannerImage />
+          </div>
         </div>
       </div>
     </section>
