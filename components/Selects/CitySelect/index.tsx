@@ -10,7 +10,7 @@ function CitySelect() {
     <button
       type="button"
       onClick={() => setIsOpen(!isOpen)}
-      className="relative flex h-10 w-[175px] items-center justify-between rounded-lg bg-grey-light px-4 py-[10px] text-lg"
+      className="relative flex h-10 w-[311px] items-center justify-between rounded-lg bg-grey-light px-4 py-[10px] text-lg sm:w-[50%] lg:w-[175px]"
     >
       {/* 注意文字粗體 */}
       <span className="font-bold">台北市</span>

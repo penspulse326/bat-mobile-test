@@ -8,7 +8,7 @@ function InputSearch() {
   return (
     <label
       htmlFor="input-search"
-      className="relative flex h-10 w-[277px] items-center justify-between rounded-lg bg-grey-light px-4 py-[10px]"
+      className="relative flex h-10 w-[311px] items-center justify-between rounded-lg bg-grey-light px-4 py-[10px] sm:w-[50%] lg:w-[277px]"
     >
       <input
         type="text"
