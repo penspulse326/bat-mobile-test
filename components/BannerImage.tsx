@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 function BannerImage() {
   return (
-    <div className="relative mx-10 hidden w-full max-w-[502px] self-end lg:block 2xl:mx-[72px]">
+    <div className="relative mx-10 mt-[72px] hidden w-full max-w-[502px] lg:block 2xl:mx-[72px]">
       <Image
         src="/banner.png"
         alt="bike"
