@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import CitySelect from '@/components/Selects/CitySelect';
+import InputSearch from '@/components/Inputs/InputSearch';
 
 function UbikePage() {
   return (
@@ -9,6 +10,7 @@ function UbikePage() {
           <h1 className="my-8 text-2xl font-bold text-primary">站點資訊</h1>
           <div className="flex">
             <CitySelect />
+            <InputSearch />
             <div className="relative w-full max-w-[502px] self-end">
               <Image
                 src="/banner.png"
