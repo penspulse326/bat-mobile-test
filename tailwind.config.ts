@@ -20,10 +20,15 @@ const config: Config = {
         grey: {
           DEFAULT: '#AEAEAE',
           dark: '#323232',
-          light: '#F6F6F6',
+          light: '#F3F3F3',
+          lighten: '#F6F6F6',
         },
       },
       screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
         '2xl': '1440px',
       },
     },
