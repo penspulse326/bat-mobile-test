@@ -1,6 +1,7 @@
-import InputSearch from '@/components/Inputs/InputSearch';
-import CitySelect from '@/components/Selects/CitySelect';
+import InputSearch from '@/components/Input/InputSearch';
+import CitySelect from '@/components/Select';
 import { BannerImage } from './data';
+import CheckBox from '@/components/CheckBox';
 
 function Banner() {
   return (
@@ -9,6 +10,7 @@ function Banner() {
         <CitySelect />
         <InputSearch />
       </div>
+      <CheckBox />
       <BannerImage />
     </div>
   );
