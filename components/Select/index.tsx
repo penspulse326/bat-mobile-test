@@ -1,10 +1,15 @@
-'use client';
-
-import Image from 'next/image';
 import { useState } from 'react';
+import { getCities } from '@/common/helper/getCityData';
+import Icon from './Icon';
 
-function CitySelect() {
+type PropsType = {
+  value: string;
+  onChange: (value: string) => void;
+};
+
+function Select({ value, onChange }: PropsType) {
   const [isOpen, setIsOpen] = useState(false);
+  const cities = getCities();
 
   return (
     <button
@@ -13,24 +18,21 @@ function CitySelect() {
       className="relative flex h-10 w-[311px] items-center justify-between rounded-lg bg-grey-light px-4 py-[10px] text-lg sm:w-[50%] lg:w-[175px]"
     >
       {/* 注意文字粗體 */}
-      <span className="font-bold">台北市</span>
-      <Image
-        src="/icon-arrow-down.svg"
-        alt="arrow down"
-        priority
-        width={18}
-        height={18}
-      />
+      <span className={`${value ? 'text-grey-dark' : 'text-grey'} font-medium`}>
+        {value || '選擇縣市'}
+      </span>
+      <Icon isSelected={value === ''} />
       {isOpen && (
-        <ul className="absolute left-0 top-[100%] mt-3 flex w-full flex-col gap-4 rounded-lg bg-grey-light p-4 text-left">
-          <li>台北市</li>
-          <li>台北市</li>
-          <li>台北市</li>
-          <li>台北市</li>
+        <ul className="absolute left-0 top-[100%] z-10 mt-3 flex max-h-[500px] w-full flex-col gap-4 overflow-y-scroll rounded-lg bg-grey-light p-4 text-left">
+          {cities.map((city: string) => (
+            <li key={city} onClick={() => onChange(city)}>
+              {city}
+            </li>
+          ))}
         </ul>
       )}
     </button>
   );
 }
 
-export default CitySelect;
+export default Select;
