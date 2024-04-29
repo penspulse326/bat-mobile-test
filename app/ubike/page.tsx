@@ -16,7 +16,7 @@ type PropsType = {
 
 async function UbikePage({ searchParams }: PropsType) {
   let ubikeData = null;
-  const city = searchParams?.city;
+  const city = searchParams?.city || null;
 
   if (city) {
     try {
@@ -30,7 +30,7 @@ async function UbikePage({ searchParams }: PropsType) {
   return (
     <section>
       <div className="container mx-auto">
-        <SearchTool data={ubikeData} />
+        <SearchTool city={city} data={ubikeData} />
       </div>
     </section>
   );

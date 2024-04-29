@@ -8,17 +8,49 @@ import { BannerImage } from '@/components/BannerImage';
 import Table from '@/components/Table';
 import SelectDistrict from '../SelectDistrict';
 import { UbikeDataType } from '@/common/constants/types';
+import district from '@/common/constants/district';
+import { getDistricts } from '@/common/helper/getCityData';
 
 type PropsType = {
+  city: string | null;
   data: UbikeDataType[] | null;
 };
 
-function SearchTool({ data }: PropsType) {
+function SearchTool({ city, data }: PropsType) {
   const router = useRouter();
-  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedCity, setSelectedCity] = useState(city || '');
+  const [selectedDistricts, setSelectedDistricts] = useState<string[]>(() => {
+    if (city) {
+      return ['全部勾選', ...getDistricts(city)];
+    } else {
+      return [];
+    }
+  });
+
+  const handleSelectCity = (value: string) => {
+    setSelectedCity(value);
+  };
+
+  const handleToggleDistrict = (name: string, checked: boolean) => {
+    if (name === '全部勾選') {
+      checked ? setSelectedDistricts(['全部勾選']) : setSelectedDistricts([]);
+    } else {
+      setSelectedDistricts((prev) => {
+        if (checked) {
+          return [...prev, name];
+        } else {
+          return prev.filter((item) => item !== name);
+        }
+      });
+    }
+  };
+
+  console.log(selectedCity, selectedDistricts);
 
   useEffect(() => {
-    if (selectedCity) router.push(`/ubike?city=${selectedCity}`);
+    if (selectedCity) {
+      router.push(`/ubike?city=${selectedCity}`);
+    }
   }, [selectedCity]);
 
   return (
@@ -29,18 +61,19 @@ function SearchTool({ data }: PropsType) {
       <div className="flex flex-col justify-between lg:flex-row">
         <div>
           <div className="flex flex-col items-center gap-4 sm:flex-row lg:items-start">
-            <Select
-              value={selectedCity}
-              onChange={(value: string) => setSelectedCity(value)}
-            />
+            <Select value={selectedCity} onChange={handleSelectCity} />
             <InputSearch />
           </div>
-          <SelectDistrict city={selectedCity} />
+          <SelectDistrict
+            city={selectedCity}
+            districts={selectedDistricts}
+            onChange={handleToggleDistrict}
+          />
         </div>
         <BannerImage />
       </div>
       <div className="my-6">
-        <Table city={selectedCity} data={data} />
+        {city && <Table city={selectedCity} data={data} />}
       </div>
     </div>
   );

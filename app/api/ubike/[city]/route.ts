@@ -10,7 +10,6 @@ export const GET = async (
   { params }: { params: ParamsType },
 ) => {
   const { city } = params;
-  console.log(city);
 
   try {
     if (city === '臺北市') {

@@ -6,8 +6,7 @@ type PropsType = {
   data: UbikeDataType[] | null;
 };
 
-function Table({ city = '臺北市', data }: PropsType) {
-  console.log(data);
+function Table({ city, data }: PropsType) {
   return (
     <div className="relative overflow-x-auto rounded-lg border border-grey  lg:rounded-[28px] lg:text-lg">
       <table className="w-full overflow-hidden">

@@ -3,16 +3,23 @@ import IconChecked from './IconChecked';
 import IconUnchecked from './IconUnchecked';
 
 type PropsType = {
+  initialChecked: boolean;
   children: string;
+  onChange: (name: string, checked: boolean) => void;
 };
 
-function CheckBox({ children }: PropsType) {
-  const [isChecked, setIsChecked] = useState(false);
+function CheckBox({ initialChecked = false, children, onChange }: PropsType) {
+  const [isChecked, setIsChecked] = useState(initialChecked);
+
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
+    onChange(children, !isChecked);
+  };
 
   return (
     <button
       type="button"
-      onClick={() => setIsChecked(!isChecked)}
+      onClick={handleToggle}
       className="flex items-center gap-1 text-nowrap lg:gap-3 lg:text-lg"
     >
       {isChecked ? <IconChecked /> : <IconUnchecked />}
