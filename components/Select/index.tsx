@@ -1,40 +1,67 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { getCities } from '@/common/helper/getCityData';
 import Icon from './Icon';
+import List from './List';
 
 type PropsType = {
   value: string;
   onChange: (value: string) => void;
 };
 
+const cities = getCities();
+
 function Select({ value, onChange }: PropsType) {
-  const [isOpen, setIsOpen] = useState(false);
-  const cities = getCities();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>(value || '選擇縣市');
+  const [searchResult, setSearchResult] = useState<string[]>(cities);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchTerm = e.target.value;
+
+    if (searchTerm === '') {
+      inputRef.current?.blur();
+      setSearchValue('選擇縣市');
+      setIsOpen(false);
+      onChange('');
+
+      return;
+    }
+
+    const filteredCities = cities.filter((city: string) =>
+      city.includes(searchTerm),
+    );
+
+    setSearchValue(searchTerm);
+    setSearchResult(filteredCities);
+    setIsOpen(true);
+  };
+
+  const handleListClick = (city: string) => {
+    setSearchValue(city);
+    setIsOpen(false);
+    onChange(city);
+  };
 
   return (
-    <button
-      type="button"
-      onClick={() => setIsOpen(!isOpen)}
+    <div
+      tabIndex={-1}
+      onFocus={() => setIsOpen(true)}
+      onBlur={() => setIsOpen(false)}
       className="relative flex h-10 w-[311px] items-center justify-between rounded-lg bg-grey-light px-4 py-[10px] text-lg sm:w-[50%] lg:w-[175px]"
     >
-      <span className={`${value ? 'text-grey-dark' : 'text-grey'} font-medium`}>
-        {value || '選擇縣市'}
-      </span>
-      <Icon isSelected={value === ''} />
-      {isOpen && (
-        <ul className="absolute left-0 top-[100%] z-10 mt-3 flex max-h-[500px] w-full flex-col overflow-y-scroll rounded-lg bg-grey-light py-2 text-left">
-          {cities.map((city: string) => (
-            <li
-              key={city}
-              onClick={() => onChange(city)}
-              className="px-4 py-2 hover:bg-grey-dark hover:text-white"
-            >
-              {city}
-            </li>
-          ))}
-        </ul>
-      )}
-    </button>
+      <input
+        type="text"
+        ref={inputRef}
+        value={searchValue}
+        onChange={handleInputChange}
+        className={`${searchValue === '選擇縣市' ? 'text-grey' : 'text-grey-dark'} w-full bg-transparent font-medium outline-none`}
+      />
+      <button type="button" onClick={() => setIsOpen(!isOpen)}>
+        <Icon isSelected={value === ''} />
+      </button>
+      {isOpen && <List data={searchResult} onChange={handleListClick} />}
+    </div>
   );
 }
 
