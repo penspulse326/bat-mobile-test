@@ -13,7 +13,7 @@ function CheckBox({ children }: PropsType) {
     <button
       type="button"
       onClick={() => setIsChecked(!isChecked)}
-      className="flex items-center gap-3 text-nowrap text-lg"
+      className="flex items-center gap-1 text-nowrap lg:gap-3 lg:text-lg"
     >
       {isChecked ? <IconChecked /> : <IconUnchecked />}
       <span>{children}</span>

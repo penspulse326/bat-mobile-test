@@ -17,7 +17,7 @@ function CheckStation({ city }: PropsType) {
           <div className="w-full">
             <CheckBox>全選</CheckBox>
           </div>
-          <ul className="flex max-w-[468px] flex-wrap gap-x-6 gap-y-4">
+          <ul className="flex max-w-[468px] flex-wrap gap-x-4 gap-y-4 lg:gap-x-6">
             {districts.map((name: string) => (
               <CheckBox key={name}>{name}</CheckBox>
             ))}
