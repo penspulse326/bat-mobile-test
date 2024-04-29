@@ -6,10 +6,9 @@ import InputSearch from '@/components/Input/InputSearch';
 import Select from '@/components/Select';
 import { BannerImage } from '@/components/BannerImage';
 import Table from '@/components/Table';
-import SelectDistrict from '../SelectDistrict';
 import { UbikeDataType } from '@/common/constants/types';
-import district from '@/common/constants/district';
 import { getDistricts } from '@/common/helper/getCityData';
+import SelectDistrict from '../SelectDistrict';
 
 type PropsType = {
   city: string | null;
@@ -19,13 +18,24 @@ type PropsType = {
 function SearchTool({ city, data }: PropsType) {
   const router = useRouter();
   const [selectedCity, setSelectedCity] = useState(city || '');
-  const [selectedDistricts, setSelectedDistricts] = useState<string[]>(() => {
-    if (city) {
-      return ['全部勾選', ...getDistricts(city)];
-    } else {
-      return [];
+  const [selectedDistricts, setSelectedDistricts] = useState<string[]>(
+    city ? ['全部勾選', ...getDistricts(city)] : [],
+  );
+
+  // filter data
+  let ubikeData: UbikeDataType[] = [];
+
+  for (let i = 0; i < selectedDistricts.length; i++) {
+    if (selectedDistricts[i] === '全部勾選') {
+      ubikeData = data!;
+      break;
     }
-  });
+    ubikeData.push(
+      ...(data?.filter(
+        ({ sarea }: UbikeDataType) => sarea === selectedDistricts[i],
+      ) || []),
+    );
+  }
 
   const handleSelectCity = (value: string) => {
     setSelectedCity(value);
@@ -40,19 +50,14 @@ function SearchTool({ city, data }: PropsType) {
     }
 
     setSelectedDistricts((prev) => {
-      if (checked) {
-        return [...prev, name];
-      } else {
-        return prev.filter((item) => item !== name);
-      }
+      return checked ? [...prev, name] : prev.filter((item) => item !== name);
     });
   };
-
-  console.log(selectedCity, selectedDistricts);
 
   useEffect(() => {
     if (selectedCity) {
       router.push(`/ubike?city=${selectedCity}`);
+      setSelectedDistricts(['全部勾選', ...getDistricts(selectedCity)]);
     }
   }, [selectedCity]);
 
@@ -77,7 +82,7 @@ function SearchTool({ city, data }: PropsType) {
       </div>
       <div className="my-6">
         {city && selectedDistricts.length !== 0 && (
-          <Table city={selectedCity} data={data} />
+          <Table city={selectedCity} data={ubikeData} />
         )}
       </div>
     </div>

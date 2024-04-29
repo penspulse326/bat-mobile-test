@@ -9,7 +9,7 @@ type PropsType = {
 
 function SelectDistrict({ city, selectedDistricts, onChange }: PropsType) {
   const districtData = city ? getDistricts(city) : [];
-  console.log(selectedDistricts.includes('大同區'));
+
   if (!city) return <></>;
 
   return (

@@ -9,7 +9,7 @@ function BannerImage() {
         sizes="100vw"
         width={502}
         height={172}
-        priority={false}
+        priority={true}
         className="h-auto w-full object-cover"
       />
     </div>
