@@ -24,7 +24,7 @@ function SearchTool() {
             />
             <InputSearch />
           </div>
-          <SelectDistrict />
+          <SelectDistrict city={selectedCity} />
         </div>
         <BannerImage />
       </div>
