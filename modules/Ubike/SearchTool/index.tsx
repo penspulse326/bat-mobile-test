@@ -33,16 +33,19 @@ function SearchTool({ city, data }: PropsType) {
 
   const handleToggleDistrict = (name: string, checked: boolean) => {
     if (name === '全部勾選') {
-      checked ? setSelectedDistricts(['全部勾選']) : setSelectedDistricts([]);
-    } else {
-      setSelectedDistricts((prev) => {
-        if (checked) {
-          return [...prev, name];
-        } else {
-          return prev.filter((item) => item !== name);
-        }
-      });
+      checked
+        ? setSelectedDistricts(['全部勾選', ...getDistricts(selectedCity)])
+        : setSelectedDistricts([]);
+      return;
     }
+
+    setSelectedDistricts((prev) => {
+      if (checked) {
+        return [...prev, name];
+      } else {
+        return prev.filter((item) => item !== name);
+      }
+    });
   };
 
   console.log(selectedCity, selectedDistricts);
@@ -66,14 +69,16 @@ function SearchTool({ city, data }: PropsType) {
           </div>
           <SelectDistrict
             city={selectedCity}
-            districts={selectedDistricts}
+            selectedDistricts={selectedDistricts}
             onChange={handleToggleDistrict}
           />
         </div>
         <BannerImage />
       </div>
       <div className="my-6">
-        {city && <Table city={selectedCity} data={data} />}
+        {city && selectedDistricts.length !== 0 && (
+          <Table city={selectedCity} data={data} />
+        )}
       </div>
     </div>
   );

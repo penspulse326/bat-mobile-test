@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import IconChecked from './IconChecked';
 import IconUnchecked from './IconUnchecked';
 
@@ -8,13 +8,17 @@ type PropsType = {
   onChange: (name: string, checked: boolean) => void;
 };
 
-function CheckBox({ initialChecked = false, children, onChange }: PropsType) {
+function CheckBox({ initialChecked, children, onChange }: PropsType) {
   const [isChecked, setIsChecked] = useState(initialChecked);
 
   const handleToggle = () => {
     setIsChecked(!isChecked);
     onChange(children, !isChecked);
   };
+
+  useEffect(() => {
+    setIsChecked(initialChecked);
+  }, [initialChecked]);
 
   return (
     <button
