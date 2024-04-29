@@ -10,9 +10,10 @@ export const GET = async (
   { params }: { params: ParamsType },
 ) => {
   const { city } = params;
+  console.log(city);
 
   try {
-    if (city === 'taipei') {
+    if (city === '臺北市') {
       const res = await fetch(process.env.BASE_URL!);
       const data = await res.json();
 

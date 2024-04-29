@@ -1,23 +1,13 @@
+import { UbikeDataType } from '@/common/constants/types';
 import TableRow from './TableRow';
 
-const data = [
-  {
-    city: '台北市',
-    district: '松山區',
-    stationName: '台北市台北市台北市',
-    availableBike: '12',
-    availableSpace: '12',
-  },
-  {
-    city: '台北市',
-    district: '松山區',
-    stationName: '台北市台北市台北市',
-    availableBike: '12',
-    availableSpace: '12',
-  },
-];
+type PropsType = {
+  city: string;
+  data: UbikeDataType[] | null;
+};
 
-function Table() {
+function Table({ city = '臺北市', data }: PropsType) {
+  console.log(data);
   return (
     <div className="relative overflow-x-auto rounded-lg border border-grey  lg:rounded-[28px] lg:text-lg">
       <table className="w-full overflow-hidden">
@@ -31,24 +21,9 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {data.map(
-            (
-              { city, district, stationName, availableBike, availableSpace },
-              index,
-            ) => (
-              <TableRow
-                key={stationName}
-                {...{
-                  city,
-                  district,
-                  stationName,
-                  availableBike,
-                  availableSpace,
-                  index,
-                }}
-              />
-            ),
-          )}
+          {data?.map((item: UbikeDataType, index) => (
+            <TableRow key={item.sno} city={city} index={index} {...item} />
+          ))}
         </tbody>
       </table>
     </div>

@@ -1,14 +1,25 @@
 'use client';
 
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import InputSearch from '@/components/Input/InputSearch';
 import Select from '@/components/Select';
-import SelectDistrict from '../SelectDistrict';
 import { BannerImage } from '@/components/BannerImage';
 import Table from '@/components/Table';
+import SelectDistrict from '../SelectDistrict';
+import { UbikeDataType } from '@/common/constants/types';
 
-function SearchTool() {
+type PropsType = {
+  data: UbikeDataType[] | null;
+};
+
+function SearchTool({ data }: PropsType) {
+  const router = useRouter();
   const [selectedCity, setSelectedCity] = useState('');
+
+  useEffect(() => {
+    if (selectedCity) router.push(`/ubike?city=${selectedCity}`);
+  }, [selectedCity]);
 
   return (
     <div className="mx-8 2xl:mx-[124px]">
@@ -29,7 +40,7 @@ function SearchTool() {
         <BannerImage />
       </div>
       <div className="my-6">
-        <Table />
+        <Table city={selectedCity} data={data} />
       </div>
     </div>
   );
