@@ -7,7 +7,10 @@ import Select from '@/components/Select';
 import { BannerImage } from '@/components/BannerImage';
 import Table from '@/components/Table';
 import { UbikeDataType } from '@/common/constants/types';
-import { getDistricts } from '@/common/helper/getCityData';
+import {
+  getDistricts,
+  getFilteredUbikeData,
+} from '@/common/helper/getCityData';
 import SelectDistrict from '../SelectDistrict';
 
 type PropsType = {
@@ -23,19 +26,9 @@ function SearchTool({ city, data }: PropsType) {
   );
 
   // filter data
-  let ubikeData: UbikeDataType[] = [];
-
-  for (let i = 0; i < selectedDistricts.length; i++) {
-    if (selectedDistricts[i] === '全部勾選') {
-      ubikeData = data!;
-      break;
-    }
-    ubikeData.push(
-      ...(data?.filter(
-        ({ sarea }: UbikeDataType) => sarea === selectedDistricts[i],
-      ) || []),
-    );
-  }
+  let ubikeData: UbikeDataType[] = data
+    ? getFilteredUbikeData(data, selectedDistricts)
+    : [];
 
   const handleSelectCity = (value: string) => {
     setSelectedCity(value);
