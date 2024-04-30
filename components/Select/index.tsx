@@ -12,25 +12,20 @@ const cities = getCities();
 
 function Select({ value, onChange }: PropsType) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [searchValue, setSearchValue] = useState<string>(value || '選擇縣市');
+  const [searchValue, setSearchValue] = useState<string>(value || '');
   const [searchResult, setSearchResult] = useState<string[]>(cities);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
 
-    if (searchTerm === '') {
-      inputRef.current?.blur();
-      setSearchValue('選擇縣市');
-      setIsOpen(false);
-      onChange('');
-
-      return;
-    }
-
     const filteredCities = cities.filter((city: string) =>
       city.includes(searchTerm),
     );
+
+    // 當過濾後的陣列不為 0，表示該搜尋字串命中，可以直接呼叫 onChange
+    if (filteredCities.length !== 0) {
+      onChange(filteredCities[0]);
+    }
 
     setSearchValue(searchTerm);
     setSearchResult(filteredCities);
@@ -43,22 +38,22 @@ function Select({ value, onChange }: PropsType) {
     onChange(city);
   };
 
+  const handleBlur = () => {
+    setTimeout(() => setIsOpen(false), 300);
+  };
+
   return (
-    <div
-      tabIndex={-1}
-      onFocus={() => setIsOpen(true)}
-      onBlur={() => setIsOpen(false)}
-      className="relative flex h-10 w-[311px] items-center justify-between rounded-lg bg-grey-light px-4 py-[10px] text-lg sm:w-[50%] lg:w-[175px]"
-    >
+    <div className="relative flex h-10 w-[311px] items-center justify-between rounded-lg bg-grey-light px-4 py-[10px] text-lg sm:w-[50%] lg:w-[175px]">
       <input
         type="text"
-        ref={inputRef}
         value={searchValue}
         onChange={handleInputChange}
-        className={`${searchValue === '選擇縣市' ? 'text-grey' : 'text-grey-dark'} w-full bg-transparent font-medium outline-none`}
+        onBlur={handleBlur}
+        placeholder="選擇縣市"
+        className="w-full bg-transparent font-medium text-grey-dark outline-none"
       />
       <button type="button" onClick={() => setIsOpen(!isOpen)}>
-        <Icon isSelected={value === ''} />
+        <Icon isSelected={value !== ''} />
       </button>
       {isOpen && <List data={searchResult} onChange={handleListClick} />}
     </div>
