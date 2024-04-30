@@ -3,11 +3,11 @@ import CheckBox from '@/components/CheckBox';
 
 type PropsType = {
   city: string;
-  selectedDistricts: string[];
+  value: string[];
   onChange: (name: string, checked: boolean) => void;
 };
 
-function SelectDistrict({ city, selectedDistricts, onChange }: PropsType) {
+function SelectDistrict({ city, value, onChange }: PropsType) {
   const districtData = city ? getDistricts(city) : [];
 
   if (!city) return <></>;
@@ -24,7 +24,7 @@ function SelectDistrict({ city, selectedDistricts, onChange }: PropsType) {
           <CheckBox
             key={name}
             onChange={onChange}
-            initialChecked={selectedDistricts.includes(name)}
+            initialChecked={value.includes(name)}
           >
             {name}
           </CheckBox>

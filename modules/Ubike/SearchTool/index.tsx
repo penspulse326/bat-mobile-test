@@ -9,7 +9,7 @@ import Table from '@/components/Table';
 import { UbikeDataType } from '@/common/constants/types';
 import {
   getDistricts,
-  getFilteredUbikeData,
+  getUbikeDataByDistrict,
 } from '@/common/helper/getCityData';
 import SelectDistrict from '../SelectDistrict';
 
@@ -24,11 +24,9 @@ function SearchTool({ city, data }: PropsType) {
   const [selectedDistricts, setSelectedDistricts] = useState<string[]>(
     city ? ['全部勾選', ...getDistricts(city)] : [],
   );
-
-  // filter data
-  let ubikeData: UbikeDataType[] = data
-    ? getFilteredUbikeData(data, selectedDistricts)
-    : [];
+  const [ubikeData, setUbikedData] = useState<UbikeDataType[] | null>(
+    data ? getUbikeDataByDistrict(data, selectedDistricts) : [],
+  );
 
   const handleSelectCity = (value: string) => {
     setSelectedCity(value);
@@ -51,8 +49,9 @@ function SearchTool({ city, data }: PropsType) {
     if (selectedCity) {
       router.push(`/ubike?city=${selectedCity}`);
       setSelectedDistricts(['全部勾選', ...getDistricts(selectedCity)]);
+      setUbikedData(getUbikeDataByDistrict(data!, selectedDistricts));
     }
-  }, [selectedCity]);
+  }, [selectedCity, data]);
 
   return (
     <div className="mx-8 2xl:mx-[124px]">
@@ -63,11 +62,14 @@ function SearchTool({ city, data }: PropsType) {
         <div>
           <div className="flex flex-col items-center gap-4 sm:flex-row lg:items-start">
             <Select value={selectedCity} onChange={handleSelectCity} />
-            <InputSearch />
+            <InputSearch
+              data={data}
+              onChange={(data: UbikeDataType[]) => setUbikedData(data)}
+            />
           </div>
           <SelectDistrict
             city={selectedCity}
-            selectedDistricts={selectedDistricts}
+            value={selectedDistricts}
             onChange={handleToggleDistrict}
           />
         </div>

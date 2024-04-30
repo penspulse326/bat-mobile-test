@@ -11,24 +11,34 @@ export const getDistricts = (city: string): string[] => {
   return districts;
 };
 
-export const getFilteredUbikeData = (
+export const getUbikeDataByDistrict = (
   data: UbikeDataType[],
-  selectedDistricts: string[],
+  districts: string[],
 ): UbikeDataType[] => {
   // filter data
   let ubikeData: UbikeDataType[] = [];
 
-  for (let i = 0; i < selectedDistricts.length; i++) {
-    if (selectedDistricts[i] === '全部勾選') {
+  for (let i = 0; i < districts.length; i++) {
+    if (districts[i] === '全部勾選') {
       ubikeData = data!;
       break;
     }
     ubikeData.push(
-      ...(data?.filter(
-        ({ sarea }: UbikeDataType) => sarea === selectedDistricts[i],
-      ) || []),
+      ...(data?.filter(({ sarea }: UbikeDataType) => sarea === districts[i]) ||
+        []),
     );
   }
 
   return ubikeData;
+};
+
+export const getUbikeDataByName = (
+  data: UbikeDataType[],
+  searchTerm: string,
+) => {
+  const filteredData = data?.filter(({ sna }: UbikeDataType) =>
+    sna.includes(searchTerm),
+  );
+
+  return filteredData || [];
 };
