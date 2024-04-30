@@ -48,14 +48,25 @@ function Select({ value, onChange }: PropsType) {
         type="text"
         value={searchValue}
         onChange={handleInputChange}
+        onFocus={() => setIsOpen(true)}
         onBlur={handleBlur}
         placeholder="選擇縣市"
         className="w-full bg-transparent font-medium text-grey-dark outline-none"
       />
-      <button type="button" onClick={() => setIsOpen(!isOpen)}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        onBlur={handleBlur}
+      >
         <Icon isSelected={value !== ''} />
       </button>
-      {isOpen && <List data={searchResult} onChange={handleListClick} />}
+      {isOpen && (
+        <List
+          data={searchResult}
+          onChange={handleListClick}
+          onClose={() => setIsOpen(false)}
+        />
+      )}
     </div>
   );
 }

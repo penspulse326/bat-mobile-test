@@ -49,14 +49,19 @@ function InputSearch({ data, onChange }: PropsType) {
         placeholder="搜尋站點"
         value={searchValue}
         onChange={handleInputChange}
+        onFocus={() => setIsOpen(true)}
         onBlur={handleBlur}
         className="w-full bg-transparent text-lg outline-none"
       />
       <div className="mx-2 w-[18px] flex-shrink-0">
         <Icon isSelected={searchValue !== ''} />
       </div>
-      {isOpen && (
-        <ul className="absolute left-0 top-[100%] z-10 mt-3 flex max-h-[500px] w-full flex-col overflow-y-scroll rounded-lg bg-grey-light py-2 text-left">
+      {isOpen && searchResult?.length !== 0 && (
+        <ul
+          tabIndex={-1}
+          onBlur={() => setIsOpen(false)}
+          className="absolute left-0 top-[100%] z-10 mt-3 flex max-h-[500px] w-full flex-col overflow-y-scroll rounded-lg bg-grey-light py-2 text-left"
+        >
           {searchResult?.map(({ sno, sna }: UbikeDataType) => (
             <li
               key={sno}
