@@ -37,11 +37,11 @@
       "error",
       {
         "groups": [
-          "external",
-          "builtin",
-          "internal",
-          "parent",
-          "sibling",
+          "external", 
+          "builtin", 
+          "internal", 
+          "sibling", 
+          "parent", 
           "index",
           "object",
           "type"
@@ -53,7 +53,7 @@
             "position": "before"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["react"],
+        "pathGroupsExcludedImportTypes": ["react", "next"],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc",
