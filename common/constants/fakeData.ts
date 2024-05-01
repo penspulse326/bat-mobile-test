@@ -1,0 +1,32 @@
+export const fakeUbikeData = [
+  {
+    sno: '000000001',
+    sna: 'YouBike2.0_測試一站',
+    tot: 23,
+    sbi: 0,
+    sarea: '測試一區',
+    ar: '天堂路三段816號',
+    bemp: 23,
+    act: '1',
+  },
+  {
+    sno: '000000002',
+    sna: 'YouBike2.0_測試二站',
+    tot: 23,
+    sbi: 0,
+    sarea: '測試二區',
+    ar: '天堂路三段816號',
+    bemp: 23,
+    act: '1',
+  },
+  {
+    sno: '000000003',
+    sna: 'YouBike2.0_測試三站',
+    tot: 23,
+    sbi: 0,
+    sarea: '測試三區',
+    ar: '天堂路三段816號',
+    bemp: 23,
+    act: '1',
+  },
+];

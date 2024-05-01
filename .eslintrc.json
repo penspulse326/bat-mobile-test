@@ -3,9 +3,17 @@
     "airbnb",
     "airbnb-typescript",
     "next/core-web-vitals",
+    "plugin:import/recommended",
     "prettier"
   ],
+  "plugins": ["import"],
   "parserOptions": {
     "project": "./tsconfig.json"
+  },
+  "rules": {
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
   }
 }
