@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react';
-import { getCities } from '@/common/helper/getCityData';
+
 import Icon from './Icon';
 import List from './List';
+
+import { getCities } from '@/common/helper/getCityData';
 
 type PropsType = {
   value: string;
