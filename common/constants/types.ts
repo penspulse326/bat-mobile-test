@@ -27,3 +27,12 @@ export type CompDescType = {
   params?: { name: string; desc: string }[];
   defaultParams?: Record<string, any>;
 };
+
+export type UbikeDataType = {
+  sno: string;
+  sna: string;
+  tot: number;
+  sbi: number;
+  sarea: string;
+  bemp: string;
+};
