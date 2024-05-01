@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+
 import { fakeUbikeData } from '@/common/constants/fakeData';
 
 type ParamsType = {

@@ -1,5 +1,5 @@
-import BtnCamera from '@/components/Buttons/BtnCamera';
-import BtnMenu from '@/components/Buttons/BtnMenu';
+import BtnCamera from '@/components/Button/BtnCamera';
+import BtnMenu from '@/components/Button/BtnMenu';
 
 function Navbar() {
   return (
