@@ -2,16 +2,18 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import InputSearch from '@/components/Input/InputSearch';
-import Select from '@/components/Select';
-import { BannerImage } from '@/components/BannerImage';
-import Table from '@/components/Table';
+
+import SelectDistrict from '../SelectDistrict';
+
 import { UbikeDataType } from '@/common/constants/types';
 import {
   getDistricts,
   getUbikeDataByDistrict,
 } from '@/common/helper/getCityData';
-import SelectDistrict from '../SelectDistrict';
+import { BannerImage } from '@/components/BannerImage';
+import InputSearch from '@/components/Input/InputSearch';
+import Select from '@/components/Select';
+import Table from '@/components/Table';
 
 type PropsType = {
   city: string | null;
@@ -33,16 +35,19 @@ function SearchTool({ city, data }: PropsType) {
   };
 
   const handleToggleDistrict = (name: string, checked: boolean) => {
-    if (name === '全部勾選') {
-      checked
-        ? setSelectedDistricts(['全部勾選', ...getDistricts(selectedCity)])
-        : setSelectedDistricts([]);
+    if (name === '全部勾選' && checked) {
+      setSelectedDistricts(['全部勾選', ...getDistricts(selectedCity)]);
       return;
     }
 
-    setSelectedDistricts((prev) => {
-      return checked ? [...prev, name] : prev.filter((item) => item !== name);
-    });
+    if (name === '全部勾選' && !checked) {
+      setSelectedDistricts([]);
+      return;
+    }
+
+    setSelectedDistricts((prev) =>
+      checked ? [...prev, name] : prev.filter((item) => item !== name),
+    );
   };
 
   useEffect(() => {
@@ -64,7 +69,7 @@ function SearchTool({ city, data }: PropsType) {
             <Select value={selectedCity} onChange={handleSelectCity} />
             <InputSearch
               data={data}
-              onChange={(data: UbikeDataType[]) => setUbikedData(data)}
+              onChange={(newData: UbikeDataType[]) => setUbikedData(newData)}
             />
           </div>
           <SelectDistrict

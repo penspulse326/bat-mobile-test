@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import Logo from '@/components/Logo';
-import LinkGroup from './LinkGroup';
+
 import BtnMenu from './BtnMenu';
+import LinkGroup from './LinkGroup';
+
+import Logo from '@/components/Logo';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

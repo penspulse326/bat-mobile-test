@@ -1,7 +1,9 @@
+import { componentList, moduleList } from './data';
+
 import ChatLogs from '../ChatLogs';
 import InputChatMessage from '../InputMessage';
 import Navbar from '../Navbar';
-import { componentList, moduleList } from './data';
+
 import CompDesc from '@/components/CompDesc';
 
 function CompDescBox() {

@@ -1,5 +1,6 @@
-import { UbikeDataType } from '@/common/constants/types';
 import TableRow from './TableRow';
+
+import { UbikeDataType } from '@/common/constants/types';
 
 type PropsType = {
   city: string;

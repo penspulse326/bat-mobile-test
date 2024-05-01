@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+
 import Icon from './icon';
+
 import { UbikeDataType } from '@/common/constants/types';
 import { getUbikeDataByName } from '@/common/helper/getCityData';
 

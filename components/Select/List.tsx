@@ -1,5 +1,3 @@
-import { useEffect, useRef } from 'react';
-
 type PropsType = {
   data: string[];
   onChange: (value: string) => void;

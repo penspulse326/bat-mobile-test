@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+
 import prizes from '@/common/constants/prizes';
 import { PrizeListType } from '@/common/constants/types';
 import raffle from '@/common/helper/raffle';

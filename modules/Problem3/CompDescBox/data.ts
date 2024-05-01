@@ -1,13 +1,13 @@
+import ChatLogs from '../ChatLogs';
+import Navbar from '../Navbar';
+
 import { CompDescType } from '@/common/constants/types';
 import BtnCamera from '@/components/Button/BtnCamera';
 import BtnMenu from '@/components/Button/BtnMenu';
 import BtnSubmitMessage from '@/components/Button/BtnSubmitMessage';
-
-import Navbar from '../Navbar';
 import ChatAvatar from '@/components/ChatAvatar';
-import ChatLogs from '../ChatLogs';
-import InputMessage from '@/modules/Problem3/InputMessage';
 import InputText from '@/components/Input/InputText';
+import InputMessage from '@/modules/Problem3/InputMessage';
 
 export const componentList: CompDescType[] = [
   {

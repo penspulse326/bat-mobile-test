@@ -10,7 +10,7 @@ type PropsType = {
 function SelectDistrict({ city, value, onChange }: PropsType) {
   const districtData = city ? getDistricts(city) : [];
 
-  if (!city) return <></>;
+  if (!city) return null;
 
   return (
     <div className="mt-6 flex max-w-[468px] flex-wrap gap-x-6 gap-y-4">

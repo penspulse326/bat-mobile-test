@@ -1,9 +1,8 @@
-import ChatMessage from '@/components/ChatMessage';
-import ChatAvatar from '@/components/ChatAvatar';
-
 import { messageLogs } from './data';
 
 import { MessageDataType } from '@/common/constants/types';
+import ChatAvatar from '@/components/ChatAvatar';
+import ChatMessage from '@/components/ChatMessage';
 
 const userId = -1;
 
