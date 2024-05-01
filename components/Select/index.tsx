@@ -1,36 +1,74 @@
-'use client';
+import { useRef, useState } from 'react';
+import { getCities } from '@/common/helper/getCityData';
+import Icon from './Icon';
+import List from './List';
 
-import Image from 'next/image';
-import { useState } from 'react';
+type PropsType = {
+  value: string;
+  onChange: (value: string) => void;
+};
 
-function CitySelect() {
-  const [isOpen, setIsOpen] = useState(false);
+const cities = getCities();
+
+function Select({ value, onChange }: PropsType) {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState<string>(value || '');
+  const [searchResult, setSearchResult] = useState<string[]>(cities);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchTerm = e.target.value;
+
+    const filteredCities = cities.filter((city: string) =>
+      city.includes(searchTerm),
+    );
+
+    // 當過濾後的陣列不為 0，表示該搜尋字串命中，可以直接呼叫 onChange
+    if (filteredCities.length !== 0) {
+      onChange(filteredCities[0]);
+    }
+
+    setSearchValue(searchTerm);
+    setSearchResult(filteredCities);
+    setIsOpen(true);
+  };
+
+  const handleListClick = (city: string) => {
+    setSearchValue(city);
+    setIsOpen(false);
+    onChange(city);
+  };
+
+  const handleBlur = () => {
+    setTimeout(() => setIsOpen(false), 300);
+  };
 
   return (
-    <button
-      type="button"
-      onClick={() => setIsOpen(!isOpen)}
-      className="relative flex h-10 w-[311px] items-center justify-between rounded-lg bg-grey-light px-4 py-[10px] text-lg sm:w-[50%] lg:w-[175px]"
-    >
-      {/* 注意文字粗體 */}
-      <span className="font-bold">台北市</span>
-      <Image
-        src="/icon-arrow-down.svg"
-        alt="arrow down"
-        priority
-        width={18}
-        height={18}
+    <div className="relative flex h-10 w-[311px] items-center justify-between rounded-lg bg-grey-light px-4 py-[10px] text-lg sm:w-[50%] lg:w-[175px]">
+      <input
+        type="text"
+        value={searchValue}
+        onChange={handleInputChange}
+        onFocus={() => setIsOpen(true)}
+        onBlur={handleBlur}
+        placeholder="選擇縣市"
+        className="w-full bg-transparent font-medium text-grey-dark outline-none"
       />
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        onBlur={handleBlur}
+      >
+        <Icon isSelected={value !== ''} />
+      </button>
       {isOpen && (
-        <ul className="absolute left-0 top-[100%] mt-3 flex w-full flex-col gap-4 rounded-lg bg-grey-light p-4 text-left">
-          <li>台北市</li>
-          <li>台北市</li>
-          <li>台北市</li>
-          <li>台北市</li>
-        </ul>
+        <List
+          data={searchResult}
+          onChange={handleListClick}
+          onClose={() => setIsOpen(false)}
+        />
       )}
-    </button>
+    </div>
   );
 }
 
-export default CitySelect;
+export default Select;
