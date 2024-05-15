@@ -58,6 +58,10 @@ function SearchTool({ city, data }: PropsType) {
     }
   }, [selectedCity, data]);
 
+  useEffect(() => {
+    setUbikedData(getUbikeDataByDistrict(data!, selectedDistricts));
+  }, [selectedDistricts]);
+
   return (
     <div className="mx-8 2xl:mx-[124px]">
       <h1 className="my-8 text-lg font-bold text-primary lg:text-2xl">

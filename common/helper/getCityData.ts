@@ -18,7 +18,7 @@ export const getUbikeDataByDistrict = (
   // filter data
   let ubikeData: UbikeDataType[] = [];
 
-  for (let i = 0; i < districts.length; i++) {
+  for (let i = 0; i < districts.length; ++i) {
     if (districts[i] === '全部勾選') {
       ubikeData = data!;
       break;
