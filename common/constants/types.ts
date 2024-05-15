@@ -31,8 +31,8 @@ export type CompDescType = {
 export type UbikeDataType = {
   sno: string;
   sna: string;
-  tot: number;
-  sbi: number;
+  total: number;
+  available_rent_bikes: number;
   sarea: string;
-  bemp: string;
+  available_return_bikes: number;
 };
